@@ -33,7 +33,7 @@ const weatherDetails = document.querySelector(".weather-details");
 const error404 = document.querySelector(".not-found");
 
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/public/index.html");
+  res.getDocument(__dirname + "/public/index.html");
 });
 
 app.post("/", async (req, res) => {
@@ -74,6 +74,10 @@ app.post("/", async (req, res) => {
     const humidity = document.querySelector(".weather-details .humidity span");
     const wind = document.querySelector(".weather-details .wind span");
     const sunrise = document.querySelector(".weather-details .sunrise span");
+
+    const Wind = document.querySelector(".weather-details .wind");
+    const Humidity = document.querySelector(".weather-details .humidity");
+    const Sunrise = document.querySelector(".weather-details .sunrise");
 
     switch (json.weather[0].main) {
       case "Clear":
@@ -120,15 +124,14 @@ app.post("/", async (req, res) => {
     weatherDetails.style.alignContent = "space-evenly";
     weatherDetails.classList.add("fadeIn");
 
-    humidity.style.justifyContent = "flex-start";
-    wind.style.justifyContent = "center";
-    wind.style.marginRight = "8rem";
-    sunrise.style.justifyContent = "flex-end";
-    sunrise.style.marginRight = "3rem";
+    Humidity.style.justifyContent = "flex-start";
+    Wind.style.justifyContent = "center";
+    Wind.style.marginLeft = "2rem";
+    Sunrise.style.justifyContent = "flex-end";
+    Sunrise.style.marginRight = "4rem";
 
     container.style.height = "590px";
     container.style.width = "500px";
-    container.style.fontFamily = "Roboto, sans-serif";
     container.style.transition = "0.6s ease-out";
 
     image.style.marginTop = "1rem";
@@ -162,16 +165,3 @@ function getTime(unixTimestamp) {
 }
 
 app.listen(4000, () => console.log("Server is running on port 4000"));
-
-// const weatherData = {
-//   temperature: data.main.temp,
-//   description: data.weather[0].description,
-//   windSpeed: data.wind.speed,
-//   city: data.name,
-//   Sunrise: `${new Date(data.sys.sunrise * 1000).toLocaleTimeString([], {
-//     hour: "2-digit",
-//     minute: "2-digit",
-//   })}`,
-//   country: data.sys.country,
-// };
-// res.json(weatherData);
