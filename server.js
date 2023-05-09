@@ -104,10 +104,7 @@ app.post("/", async (req, res) => {
     description.innerHTML = `${json.weather[0].description}`;
     humidity.innerHTML = `${json.main.humidity}%`;
     wind.innerHTML = `${parseInt(json.wind.speed)}Km/h`;
-    sunrise.innerHTML = `${new Date(json.sys.sunrise * 1000).toLocaleTimeString(
-      [],
-      { hour: "2-digit", minute: "2-digit" }
-    )}`;
+    sunrise.innerHTML = `${getTime(json.sys.sunrise)}`;
 
     searchBox.style.marginLeft = "2.2rem";
 
