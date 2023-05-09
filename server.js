@@ -36,7 +36,7 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname + "/public/index.html");
 });
 
-app.post("/weather", async (req, res) => {
+app.post("/", async (req, res) => {
   const { city } = req.body;
 
   if (!city) {
