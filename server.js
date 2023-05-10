@@ -71,6 +71,9 @@ app.post("/", async (req, res) => {
     const cityName = document.querySelector(".weather-box .cityName");
     const temperature = document.querySelector(".weather-box .temperature");
     const description = document.querySelector(".weather-box .description");
+    const Hicon = document.querySelector(".weather-details .humidity i");
+    const Wicon = document.querySelector(".weather-details .wind i");
+    const Sicon = document.querySelector(".weather-details .sunrise i");
     const humidity = document.querySelector(".weather-details .humidity span");
     const wind = document.querySelector(".weather-details .wind span");
     const sunrise = document.querySelector(".weather-details .sunrise span");
@@ -106,12 +109,16 @@ app.post("/", async (req, res) => {
     wind.innerHTML = `${parseInt(json.wind.speed)}Km/h`;
     sunrise.innerHTML = `${getTime(json.sys.sunrise)}`;
 
-    searchBox.style.marginLeft = "2.2rem";
+    searchBox.style.marginLeft = "0.65rem";
 
     cityName.style.fontSize = "1.3rem";
     cityName.style.marginTop = "1rem";
 
-    temperature.style.fontSize = "2rem";
+    temperature.style.fontSize = "1.4rem";
+
+    Hicon.style.fontSize = "1.2rem";
+    Wicon.style.fontSize = "1.2rem";
+    Sicon.style.fontSize = "1.2rem";
 
     weatherBox.style.display = "grid";
     weatherBox.classList.add("fadeIn");
@@ -122,17 +129,21 @@ app.post("/", async (req, res) => {
     weatherDetails.classList.add("fadeIn");
 
     Humidity.style.justifyContent = "flex-start";
+    Humidity.style.marginLeft = "-1rem";
+    humidity.style.fontSize = "1rem";
     Wind.style.justifyContent = "center";
     Wind.style.marginLeft = "2rem";
+    wind.style.fontSize = "1rem";
     Sunrise.style.justifyContent = "flex-end";
     Sunrise.style.marginRight = "4rem";
+    sunrise.style.fontSize = "1rem";
 
-    container.style.height = "590px";
-    container.style.width = "500px";
+    container.style.height = "31rem";
+    container.style.width = "25rem";
     container.style.transition = "0.6s ease-out";
 
     image.style.marginTop = "1rem";
-    image.style.width = "45%";
+    image.style.width = "35%";
     image.style.justifySelf = "center";
 
     res.send(document.defaultView.document.documentElement.outerHTML);
@@ -158,7 +169,7 @@ function getDocument(filePath) {
 function getTime(unixTimestamp) {
   const date = new Date(unixTimestamp * 1000);
   const options = { hour: "2-digit", minute: "2-digit" };
-  return date.toLocaleTimeString([], options);
+  return date.toLocaleTimeString([], options).toLocaleUpperCase();
 }
 
 app.listen(4000, () => console.log("Server is running on port 4000"));
