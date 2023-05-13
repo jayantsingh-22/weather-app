@@ -116,7 +116,6 @@ body {
 .weather-details .sunrise {
   display: flex;
   align-items: center;
-  width: 33.33%;
   height: 100px;
 }
 
@@ -131,7 +130,7 @@ body {
 }
 
 .weather-details .sunrise {
-  padding-right: 20px;
+  padding-left: 20px;
   justify-content: flex-end;
 }
 
