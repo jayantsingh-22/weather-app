@@ -27,6 +27,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const document = getDocument("./public/index.html");
 
 const searchBox = document.querySelector(".search-box");
+const form = document.querySelector(".search-box form");
 const container = document.querySelector(".container");
 const weatherBox = document.querySelector(".weather-box");
 const weatherDetails = document.querySelector(".weather-details");
@@ -109,7 +110,8 @@ app.post("/", async (req, res) => {
     wind.innerHTML = `${parseInt(json.wind.speed)}Km/h`;
     sunrise.innerHTML = `${getTime(json.sys.sunrise)}`;
 
-    searchBox.style.marginLeft = "0.65rem";
+    searchBox.style.width = "100%";
+    searchBox.style.marginLeft = "10px";
 
     cityName.style.fontSize = "1.3rem";
     cityName.style.marginTop = "1rem";
@@ -132,10 +134,10 @@ app.post("/", async (req, res) => {
     Humidity.style.marginLeft = "-1rem";
     humidity.style.fontSize = "1rem";
     Wind.style.justifyContent = "center";
-    Wind.style.marginLeft = "2rem";
+    Wind.style.marginLeft = "1rem";
     wind.style.fontSize = "1rem";
     Sunrise.style.justifyContent = "flex-end";
-    Sunrise.style.marginRight = "4rem";
+    Sunrise.style.marginLeft = "2rem";
     sunrise.style.fontSize = "1rem";
 
     container.style.height = "31rem";
