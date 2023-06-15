@@ -90,6 +90,9 @@ app.post("/", async (req, res) => {
       case "Rain":
         image.src = "/images/rain.png";
         break;
+      case "Drizzle":
+        image.src = "/images/rain.png";
+        break;
       case "Snow":
         image.src = "/images/snow.png";
         break;
@@ -98,6 +101,21 @@ app.post("/", async (req, res) => {
         break;
       case "Haze":
         image.src = "/images/mist.png";
+        break;
+      case "Mist":
+        image.src = "/images/mist.png";
+        break;
+      case "Fog":
+        image.src = "/images/mist.png";
+        break;
+      case "Thunderstorm":
+        image.src = "/images/thunderstorm.png";
+        break;
+      case "Dust":
+        image.src = "/images/dust.png";
+        break;
+      case "Smoke":
+        image.src = "/images/dust.png";
         break;
       default:
         image.src = "";
